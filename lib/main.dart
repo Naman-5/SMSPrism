@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'message_page.dart';
+import 'package:sms_prism/layouts/onboarding_screen.dart';
 
 const messages = [
   {"s": "Sender", "c": "Content"},
@@ -9,5 +9,7 @@ const messages = [
   {"s": "Sender", "c": "Content"},
 ];
 void main() {
-  runApp(const DisplayMessages());
+  runApp(const MaterialApp(
+    home: OnboardingScreen(),
+  ));
 }
