@@ -44,14 +44,17 @@ class MessageList extends StatelessWidget {
     return ListView.separated(
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            height: 100,
+            height: 70,
             margin: const EdgeInsets.fromLTRB(15, 10, 15, 0),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(25.0),
             ),
             child: Column(
               children: [
+                const SizedBox(
+                  height: 5,
+                ),
                 Row(
                   children: [
                     const SizedBox(
