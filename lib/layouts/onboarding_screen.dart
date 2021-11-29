@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sms_prism/res/onboarding_screen_items.dart';
+import 'package:sms_prism/layouts/terms.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -87,21 +88,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         margin: const EdgeInsets.only(top: 10.0),
         child: Stack(
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Skip',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16.0),
-                    ),
-                  )),
-            ),
             PageView.builder(
                 controller: _pageViewController,
                 itemCount: _pages.length,
@@ -123,6 +109,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: _getIndicator(),
                   ),
                 )),
+            Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: TextButton(
+                    child: const Text(
+                      'Skip',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.0),
+                    ),
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const TermsScreen()),
+                          (route) => false);
+                    },
+                  )),
+            ),
             if (currentPage == 2)
               Align(
                 alignment: Alignment.bottomRight,
@@ -140,7 +147,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       color: Colors.white,
                       size: 30,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const TermsScreen()));
+                    },
                   ),
                 ),
               )
