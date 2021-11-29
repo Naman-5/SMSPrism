@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sms_prism/res/terms_list.dart';
+import 'package:sms_prism/message_page.dart';
 
 class TermsScreen extends StatefulWidget {
   const TermsScreen({Key? key}) : super(key: key);
@@ -87,7 +88,12 @@ class _TermsScreenState extends State<TermsScreen> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: Colors.indigo[300], shape: const StadiumBorder()),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DisplayMessages()));
+                },
                 child: Row(
                   children: const [
                     Text(
