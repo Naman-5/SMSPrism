@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sms_prism/res/terms_list.dart';
 import 'package:sms_prism/message_page.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class TermsScreen extends StatefulWidget {
   const TermsScreen({Key? key}) : super(key: key);
@@ -89,6 +91,8 @@ class _TermsScreenState extends State<TermsScreen> {
                 style: ElevatedButton.styleFrom(
                     primary: Colors.indigo[300], shape: const StadiumBorder()),
                 onPressed: () {
+                  Box db = Hive.box('T&C');
+                  db.put('Accepted', 1);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
