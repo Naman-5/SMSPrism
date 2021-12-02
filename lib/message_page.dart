@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'main.dart';
+import 'dart:ui';
 
 var _messages = [];
+Color color = Colors.green;
+String color_selector = "Important";
+
 /*
 Function to send message content to the flask API and
 fetch the user respose.
@@ -27,6 +31,14 @@ Future<void> sort(i) async {
 
 Future setMessage(m) async {
   _messages = m;
+}
+
+Color getColor(type) {
+  if (type == 'Important') {
+    return Colors.green;
+  } else {
+    return Colors.red;
+  }
 }
 
 class Home extends StatefulWidget {
@@ -197,12 +209,16 @@ class MessageList extends StatelessWidget {
                       _messages[index]["s"].toString() +
                           " || " +
                           _messages[index]['type'].toString(),
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: getColor(color_selector)),
+                      textAlign: TextAlign.justify,
                     )
                   ],
                 ),
                 Text(
                   _messages[index]["c"].toString(),
+                  textAlign: TextAlign.left,
                 )
               ],
             ),
@@ -233,9 +249,26 @@ class DrawerSection extends StatelessWidget {
             ListView(
               children: <Widget>[
                 TextButton(
-                    onPressed: () {}, child: const Text('Important Messages')),
+                    onPressed: () {
+                      setMessage(hamMessages);
+                      color_selector = "Important";
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DisplayMessages()));
+                    },
+                    child: const Text('Important Messages')),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setMessage(spamMessages);
+                    color_selector = "Spam";
+                    Navigator.of(context).pop();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DisplayMessages()));
+                  },
                   child: const Text('Spam/Advertising'),
                   style: ButtonStyle(
                       foregroundColor: MaterialStateProperty.all(Colors.red)),

@@ -6,6 +6,8 @@ import 'message_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+String pageSelector = "Important";
+
 // the messages variable contains few messages for intial classification
 var messages = [
   {
