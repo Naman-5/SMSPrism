@@ -4,6 +4,7 @@ import 'package:sms_prism/res/terms_list.dart';
 import 'package:sms_prism/message_page.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import '../main.dart';
 
 class TermsScreen extends StatefulWidget {
   const TermsScreen({Key? key}) : super(key: key);
@@ -96,7 +97,8 @@ class _TermsScreenState extends State<TermsScreen> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const DisplayMessages()));
+                          builder: (context) =>
+                              Home(hamMessages, spamMessages)));
                 },
                 child: Row(
                   children: const [
