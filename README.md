@@ -13,9 +13,11 @@ We have built an SMS app that could detect spam messages and separate them from 
 
 ## UI Snapshots
 
-![Welcome](Snapshots/Welcome.png)
-![T&C](Snapshots/T&C.png)
-![Message](Snapshots/Message.png)
+Welcome Screen             |  Terms & Conditons Page
+:-------------------------:|:-------------------------:
+![Welcome](Snapshots/Welcome.png)  |  ![T&C](Snapshots/T&C.png)
+
+![Messages](Snapshots/Message.png)
 
 
 ## Installation Steps
