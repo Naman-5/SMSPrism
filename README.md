@@ -15,7 +15,7 @@ We have built an SMS app that could detect spam messages and separate them from 
 
 ![Welcome](Snapshots/Welcome.png)
 ![T&C](Snapshots/T&C.png)
-![Messages](Snapshots/Messages.png)
+![Message](Snapshots/Message.png)
 
 ## Installation Steps
 > To install the application on your local machine do the following:
