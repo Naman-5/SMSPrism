@@ -61,7 +61,9 @@ Future<void> categorize() async {
       var response =
           await http.post(url, body: json.encode({'key': '${i['c']}'}));
       i['type'] = json.decode(response.body);
-    } on Exception {}
+    } on Exception {
+      i['type'] = "Server-Offline";
+    }
   }
 }
 
@@ -86,6 +88,7 @@ void main() async {
   await Hive.openBox('T&C');
   if (Hive.box('T&C').isEmpty) {
     runApp(const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: OnboardingScreen(),
     ));
   } else {
