@@ -6,7 +6,7 @@ import 'dart:ui';
 
 var _messages = [];
 Color color = Colors.green;
-String color_selector = "Important";
+String colorSelector = "Important";
 
 /*
 Function to send message content to the flask API and
@@ -41,11 +41,15 @@ Color getColor(type) {
   }
 }
 
+// ignore: must_be_immutable
 class Home extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   var hamMessages;
+  // ignore: prefer_typing_uninitialized_variables
   var spamMessages;
-  Home(this.hamMessages, this.spamMessages);
+  Home(this.hamMessages, this.spamMessages, {Key? key}) : super(key: key);
   @override
+  // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() => HomeState(hamMessages, spamMessages);
 }
 
@@ -184,8 +188,11 @@ class DisplayMessagesState extends State<DisplayMessages> {
   }
 }
 
+// ignore: must_be_immutable
 class MessageList extends StatelessWidget {
   var change = false;
+
+  MessageList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +218,7 @@ class MessageList extends StatelessWidget {
                           _messages[index]['type'].toString(),
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: getColor(color_selector)),
+                          color: getColor(colorSelector)),
                       textAlign: TextAlign.justify,
                     )
                   ],
@@ -251,7 +258,7 @@ class DrawerSection extends StatelessWidget {
                 TextButton(
                     onPressed: () {
                       setMessage(hamMessages);
-                      color_selector = "Important";
+                      colorSelector = "Important";
                       Navigator.of(context).pop();
                       Navigator.push(
                           context,
@@ -262,7 +269,7 @@ class DrawerSection extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     setMessage(spamMessages);
-                    color_selector = "Spam";
+                    colorSelector = "Spam";
                     Navigator.of(context).pop();
                     Navigator.push(
                         context,

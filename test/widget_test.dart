@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sms_prism/main.dart';
 import 'package:sms_prism/message_page.dart';
 
 void main() {
